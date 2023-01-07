@@ -1,4 +1,4 @@
-wo# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Задание 4.3
 
@@ -22,3 +22,5 @@ wo# -*- coding: utf-8 -*-
 """
 
 config = "switchport trunk allowed vlan 1,3,10,20,30,100"
+result = (config.split(' ')[-1]).split(',')
+print(result)
