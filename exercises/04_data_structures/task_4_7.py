@@ -16,3 +16,9 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+
+red = sorted(list(set(mac.replace(':',''))))
+#print(red)
+red = '{:b}'.format(int(red[0],16))*4 + '{:b}'.format(int(red[1],16))*4 + '{:b}'.format(int(red[2],16))*4
+
+print(red)
