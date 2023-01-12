@@ -49,3 +49,32 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+ip_template = '''Network:
+{:<10}{:<10}{:<10}{:<10}
+{:08b}  {:08b}  {:08b}  {:08b}'''
+mask_template = '''Mask:
+/{}
+{:<10}{:<10}{:<10}{:<10}
+{:08b}  {:08b}  {:08b}  {:08b}'''
+
+ip_and_mask = input("Input ip with mask ")
+
+ip, mask = ip_and_mask.split('/')
+mask = int(mask)
+ip=ip.split('.')
+
+mask_bin = mask*'1'+(32-mask)*'0'
+mask_bin = [mask_bin[i:i+8] for i in range(0,len(mask_bin),8)]
+mask_int = [int(i,2) for i in mask_bin]
+
+ip = [int(x) for x in ip]
+bin_ip = '{:08b}{:08b}{:08b}{:08b}'.format(ip[0], ip[1], ip[2], ip[3])
+bin_ip = list(bin_ip)
+for i in range(mask,len(bin_ip)): #mask manipulations
+      bin_ip[i] = '0'
+bin_ip = ''.join(bin_ip)
+bin_ip = [bin_ip[i:i+8] for i in range(0,len(bin_ip),8)]
+new_ip = [int(i,2) for i in bin_ip]
+
+print(ip_template.format(new_ip[0],new_ip[1],new_ip[2],new_ip[3],new_ip[0],new_ip[1],new_ip[2],new_ip[3]))
+print(mask_template.format(mask,mask_int[0],mask_int[1],mask_int[2],mask_int[3],mask_int[0],mask_int[1],mask_int[2],mask_int[3]))

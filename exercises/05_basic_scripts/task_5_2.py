@@ -1,8 +1,10 @@
-# -*- coding: utf-8 -*-
+# # -*- coding: utf-8 -*-
+
+
 """
 Задание 5.2
 
-Запросить у пользователя ввод IP-сети в формате: 10.1.1.0/24
+Запросить у пользователя ввод IP-сети в формате: 
 
 Затем вывести информацию о сети и маске в таком формате:
 
@@ -30,3 +32,22 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+ip_template = '''{:<10}{:<10}{:<10}{:<10}
+{:08b}  {:08b}  {:08b}  {:08b}'''
+
+ip_and_mask = input("Input ip with mask ")
+
+ip, mask = ip_and_mask.split('/')
+mask = int(mask)
+ip=ip.split('.')
+mask_bin = mask*'1'+(32-mask)*'0'
+mask_int = [mask_bin[i:i+8] for i in range(0,len(mask_bin),8)]
+mask_int = [(int(i,2)) for i in mask_int]
+
+ip = [int(x) for x in ip]
+
+print("Network:")
+print(ip_template.format(ip[0],ip[1],ip[2],ip[3],ip[0],ip[1],ip[2],ip[3]))
+print("Mask:")
+print("/"+str(mask))
+print(ip_template.format(mask_int[0],mask_int[1],mask_int[2],mask_int[3],mask_int[0],mask_int[1],mask_int[2],mask_int[3]))
