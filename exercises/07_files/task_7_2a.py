@@ -16,15 +16,19 @@
 
 """
 
-ignore = ["duplex", "alias", "configuration"]
+ignore = ["alias", "duplex",  "configuration"]
 
 with open('config_sw1.txt', 'r') as file:
     for line in file:
+        to_print = True
+        if line.startswith('!'):
+            continue
         for word in ignore:
-            if line.startswith('!') or word in line:
-                continue
+             if word in line:
+                to_print = False
+        if (to_print):
             print(line.strip('\n'))
-            break
+        
                 
         
                 
