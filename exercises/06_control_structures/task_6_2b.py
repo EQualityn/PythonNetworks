@@ -19,14 +19,14 @@ options = ['unicast',
    'unused']
 
 
-is_not_correct_ip = True
-while is_not_correct_ip:
+is_correct_ip = False
+while not is_correct_ip:
    ip = input("Input ip address ")
    ip = [byte for byte in ip.split('.')]
    if (len(ip) != 4 or not all(elem.isdigit() for elem in ip) or not all(int(elem)>=0 and int(elem)<=255 for elem in ip)):
       print("Неправильный IP-адрес")
       continue
-   is_not_correct_ip = False
+   is_correct_ip = True
 
 ip = [int(byte) for byte in ip]
 if (ip[0] >= 1 and ip[0] <= 223):

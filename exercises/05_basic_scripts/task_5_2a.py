@@ -70,7 +70,7 @@ mask_int = [int(i,2) for i in mask_bin]
 ip = [int(x) for x in ip]
 bin_ip = '{:08b}{:08b}{:08b}{:08b}'.format(ip[0], ip[1], ip[2], ip[3]) 
 
-# another_new_ip = bin_ip[:mask] + (32-mask)*'0' ##good method
+# another_new_ip = bin_ip[:mask] + (32-mask)*'0' #good method
 # print(another_new_ip)
 
 bin_ip = list(bin_ip)
